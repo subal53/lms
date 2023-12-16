@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Issued Book </title>
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .sm-bt{
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 3px;
+            margin: 3px;
+        }
+        
+        .dash{
+            background-color: #04AA6D;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+        .tb,tr,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 3px;
+            text-align: center;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        th{
+            background-color: #04AA6D;
+            color: white;
+        }
+        table{
+            margin: auto;
+            box-shadow: 3px 3px 6px black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table class="tb">
+            <tr>
+                <th colspan="12">
+                    <h3>All Issued Book Record</h3>
+                </th>
+                <th style="border: none;">
+                    <a href="/account/adm_dashboard"><button class="dash">dashboard</button></a>
+                </th>
+            </tr>
+            <tr>
+                <th>SL No.</th>
+                <th>Issue Id</th>
+                <th>Sid</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Dept.</th>
+                <th>Title</th>
+                <th>author</th>
+                <th>Request Date</th>
+                <th>Issued Date</th>
+                <th>Return Date</th>
+                <th>Pending</th>
+                <th>Actions</th>
+            </tr>
+            {% for obj in objs %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{obj.id}}</td>
+                    <td>{{obj.sid}}</td>
+                    <td>{{obj.sname}}</td>
+                    <td>{{obj.roll}}</td>
+                    <td>{{obj.dept}}</td>
+                    <td>{{obj.title}}</td>
+                    <td>{{obj.author}}</td>
+                    <td>{{obj.req_date}}</td>
+                    <td>{{obj.iss_date}}</td>
+                    <td>{{obj.ret_date}}</td>
+                    <td style="background-color: {{obj.color}};">{{obj.day}}</td>
+
+                    <td><a href="close?id={{obj.id}}"><button class="sm-bt">Close</button></a></td>
+                    
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="13">Empty</td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+</body>
+</html>

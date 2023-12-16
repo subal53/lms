@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student verifiy</title>
+    <style>
+        .con{
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 400px;
+            margin: auto;
+            margin-top: 5px;
+            padding: 20px;
+            font-size: 20px;
+            font-style: oblique;
+
+        }
+        .wr{
+            background-color: brown;
+            text-align: center;
+        }
+
+        h3{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .reg_img{
+            width: 250px;
+            height: 350px;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin-top: 20px;
+            
+        }
+        .bt{
+            width: 180px;
+            height: 35px;
+            border: none;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+
+        }
+        .hold-bt{
+            display: flex;
+            flex-direction: row;
+            
+        }
+        .text-ct{
+            text-align: center;
+        }
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: -5px;
+            margin-bottom: -5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="heading">
+            <h3>Student Verification</h3>
+            <hr>
+        </div>
+        Student Id: {{std.sid}} <br>
+        Name: {{std.name}} <br>
+        Roll: {{std.roll}} 
+        Dept: {{std.dept}} <br>
+        Reg No: {{std.reg}} <br>
+        Address: {{std.address}} <br>
+        Phone No: {{std.phone_no}} <br>
+
+        <div class="text-ct hold-bt">
+            <a  href="?checked=1&sid={{std.sid}}"><button class="bt" >Approve</button></a>
+            <a href="?checked=2&sid={{std.sid}}"><button class="bt" style="background-color: red;">Reject</button></a>
+        </div>
+        
+    </div>
+</body>
+</html>

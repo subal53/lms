@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student history</title>
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .dash{
+            background-color: #04AA6D;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+        .sm-bt{
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 3px;
+            margin: 3px;
+        }
+        .tb,tr,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 3px;
+            text-align: center;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        th{
+            background-color: #04AA6D;
+            color: white;
+        }
+        table{
+            max-width: 100%;
+            margin: auto;
+            box-shadow: 3px 3px 6px black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table class="tb">
+            <tr>
+                <th colspan="8">
+                    <h3>History </h3>
+                </th>
+                <th style="border: none;">
+                    <a href="/account/std_dashboard"><button class="dash">dashboard</button></a>
+                </th>
+            </tr>
+            <tr>
+                <th>SL</th>
+                <th>Title</th>
+                <th>author</th>
+                <th>Request Date</th>
+                <th>Issue Date</th>
+                <th>Return Date</th>
+                <th>Close Date</th>
+                <th>Librarian</th>
+                <th>Status</th>
+            </tr>
+            {% for issue_data in obj %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{issue_data.title}}</td>
+                    <td>{{issue_data.author}}</td>
+                    <td>{{issue_data.req_date}}</td>
+                    <td>{{issue_data.issue_date}}</td>
+                    <td style="background-color: {{issue_data.color}};">{{issue_data.return_date}}</td>
+                    <td>{{issue_data.close_date}}</td>
+                    <td>{{issue_data.adm}}</td>
+                    <td>
+                        {% if issue_data.status == "0" %}
+                            pandding
+                        {% elif issue_data.status == "1" %}
+                            issued
+                        {% elif issue_data.status == "2" %}
+                            closed
+                        {% else %}
+                            cancled
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="9">Empty</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

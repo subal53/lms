@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student login page</title>
+    <style>
+        .con{
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 350px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 15px;
+            font-size: 20px;
+            box-shadow: 3px 3px 6px black;
+
+        }
+        .wr{
+            text-align: center;
+            margin-top: 5px;
+            text-align: center;
+            margin-top: 5px;
+            color: brown;
+            border: 2px solid brown;
+            box-shadow: 3px 3px 6px brown;
+        }
+
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .bt{
+            width: 250px;
+            height: 35px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 50px;
+
+        }
+        .text-ct{
+            text-align: center;
+        }
+        input{
+            font-size: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% if status %}
+    <div class="con wr" >
+        {{error}}
+    </div>
+    {% endif %}
+    <div class="con">
+        <form action="student_login" method="post">
+            <div class="heading">
+                <h3>Student Login</h3>
+                <hr>
+            </div>
+            
+            {% csrf_token %}
+            Student ID: <br>
+            <input type="text" name="sid" id="" required><br>
+            Password: <br>
+            <input type="password" name="password" id="" required><br>
+            <a href="/account/student_signup" style="font-size: 15px;">Create an account?</a>
+            <div class="text-ct">
+                <input class="bt" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

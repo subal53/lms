@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student verifiy page</title>
+    <style>
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .sm-bt{
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 3px;
+            margin: 3px;
+        }
+        
+        .dash{
+            background-color: #04AA6D;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+        .tb,tr,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 3px;
+            text-align: center;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        th{
+            background-color: #04AA6D;
+            color: white;
+        }
+        table{
+            min-width: 400px;
+            margin: auto;
+            box-shadow: 3px 3px 6px black;
+        }
+    </style>
+</head>
+<body>
+    <table class="tb">
+        <tr>
+            <th colspan="4">
+                <h3>Students Verification</h3>
+            </th>
+            <th style="border: none;">
+                <a href="/account/adm_dashboard"><button class="dash">Dashboard</button></a>
+            </th>
+        </tr>
+        <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Dept</th>
+            <th>Actions</th>
+        </tr>
+        {% for std in stds %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{std.name}}</td>
+            <td>{{std.roll}}</td>
+            <td>{{std.dept}}</td>
+            <td><a href="std_verifiy?sid={{std.sid}}"><button class="sm-bt">Check</button></a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Empty</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>issued</title>
+    <style>
+        .con{
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 350px;
+            margin: auto;
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 20px;
+            box-shadow: 3px 3px 6px black;
+
+        }
+
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .bt{
+            width: 250px;
+            height: 35px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+
+        }
+        .text-ct{
+            text-align: center;
+        }
+        input{
+            font-size: 20px;
+            margin-bottom: 2px;
+            width: 100%;
+        }
+        body{
+            width: 100%;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    {% if byId %}
+    <div class="con">
+
+        <div class="heading">
+            <h3>Book issue</h3>
+            <hr>
+        </div>
+
+       <form action="issued" method="post">
+        {% csrf_token %}
+        Issued Id: <input type="text" name="id" value="{{id}}" readonly><br>
+        Student Name: <input type="text" value="{{sname}}" readonly><br>
+        Roll: <input type="text" value="{{roll}}" readonly><br>
+        Dept: <input type="text" value="{{dept}}" readonly><br>
+        Book Title: <input type="text" value="{{title}}" readonly><br>
+        Author: <input type="text" value="{{author}}" readonly><br>
+        Request Date: <input type="text" value="{{req_date}}" readonly><br>
+        Return Date: <input type="date" name="ret_date" required><br>
+        Actions: <input type="radio" name="actions" value="1" style="width: auto;"> Approve
+        <input type="radio" name="actions" value="3" style="width: auto;"> Reject<br>
+        
+        <div class="text-ct"><input class="bt" type="submit" value="submit"></div>
+        
+       </form>
+    </div>
+    {% else %}
+    <div class="con">
+        <div class="heading">
+            <h3>Book issue</h3>
+            <hr>
+        </div>
+
+        <form action="issued" method="post">
+            {% csrf_token %}
+            Student Id: <input type="text" name="sid"  required><br>
+            Book Id: <input type="text" name="bid" required ><br>
+            Return Date: <input type="date" name="ret_date" required><br>
+            <div class="text-ct">
+                <input class="bt" type="submit" value="submit">
+            </div>
+            
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>

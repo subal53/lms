@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student signup page</title>
+    <style>
+        .con{
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 350px;
+            margin: auto;
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 20px;
+
+
+        }
+        .wr{
+            text-align: center;
+            margin-top: 5px;
+            text-align: center;
+            margin-top: 5px;
+            color: brown;
+            border: 2px solid brown;
+        }
+
+        .heading{
+            text-align: center;
+            font-size: 20px;
+            margin-left: -4%;
+            margin-right: -4%;
+        }
+        h3{
+            margin-top: 0px;
+            margin-bottom: -5px;
+        }
+        .bt{
+            width: 250px;
+            height: 35px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+
+        }
+        .text-ct{
+            text-align: center;
+        }
+        input{
+            font-size: 20px;
+            margin-bottom: 2px;
+            width: 100%;
+        }
+        textarea{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if status %}
+            <div class="con wr">
+                {{error}}
+            </div>
+            {% endif %}
+    <div class="con">
+        
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="heading">
+                <h3>Student Signup</h3>
+                <hr>
+            </div>
+            
+            {% csrf_token %} <br>
+            Name: <br>
+            <input type="text" name="name" id="" required><br>
+            Roll: <br>
+            <input type="number" name="roll" id="" required><br>
+            Depertment:<br>
+             <input type="text" name="dept" id="" required><br>
+            Registration No:<br>
+            <input type="number" name="reg" id="" max="9999999999" required><br>
+            Address: <br>
+            <textarea name="addr" id="" cols="30" rows="3" required></textarea><br>
+            Phone No:<br>
+            <input type="number" name="ph" id="" required><br>
+            Password:<br>
+            <input type="password" name="password" id="" required><br>
+            <p style="font-size: 15px;">Already a User?<a href="/account/student_login">LOGIN</a></p>
+            
+            <div class="text-ct">
+                <input class="bt" type="submit" value="Signup">
+            </div>
+            
+            
+        </form>
+    </div>
+</body>
+</html>
